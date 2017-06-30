@@ -16,7 +16,7 @@
 <body >
 	<div class="title-top">
         <div class="balck-center">
-            <a href="javascript:void(0)" class="back-icon" onclick="history.go(-1)"><img src="__TMPL__Wap/Msg/images/blacks.png" alt=""></a>
+            <!-- <a href="javascript:void(0)" class="back-icon" onclick="history.go(-1)"><img src="__TMPL__Wap/Msg/images/blacks.png" alt=""></a> -->
             <h3>武汉天地店</h3>
         </div>
 	</div>
@@ -140,22 +140,22 @@ $('.btn-sub').click(function(){
 	
 	//预 定 人yname
 	var yname = $('.yname').val();
-	if($.trim(yname) == ''){
+	/* if($.trim(yname) == ''){
 		layer.msg('请输入预订人');
 		return false
-	}
+	} */
 	//来访事由content
 	var content = $('.content').val();
-	if($.trim(content) == ''){
+	/* if($.trim(content) == ''){
 		layer.msg('请输入来访事由');
 		return false
-	}
+	} */
 	//备注make
 	var make = $('.make').val();
-	if($.trim(make) == ''){
+	/* if($.trim(make) == ''){
 		layer.msg('请输入备注');
 		return false
-	}
+	} */
 	$('.btn-sub').attr('onoff', 1);
 	$.ajax({
         type: "post",
@@ -249,8 +249,9 @@ function oSearchSuggest(searchFuc, key, value)
 	var input = $(key); 
 	var suggestWrap = $(value); 
 	var key = ""; 
-	var init = function(){ 
-		input.bind('keyup',sendKeyWord); 
+	var init = function(){
+		input.bind('keyup',sendKeyWord);
+		input.bind('propertychange', sendKeyWord); //监听iphone手机自带输入法
 		input.bind('blur',function(){setTimeout(hideSuggest,100);}) 
 	} 
 	var hideSuggest = function(){ 
