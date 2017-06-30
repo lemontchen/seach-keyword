@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>武汉天地店</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="format-detection" content="email=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="stylesheet" href="__TMPL__Wap/Msg/css/reset.css" />
+	<link rel="stylesheet" href="__TMPL__Wap/Msg/css/center.css" />
+	<link rel="stylesheet" href="__TMPL__Wap/Msg/css/swiper.min.css">
+</head>
+<body >
+	<div class="title-top">
+        <div class="balck-center">
+            <!-- <a href="javascript:void(0)" class="back-icon" onclick="history.go(-1)"><img src="__TMPL__Wap/Msg/images/blacks.png" alt=""></a> -->
+            <h3>武汉天地店</h3>
+        </div>
+	</div>
+	<div class="body-bg"></div>
+	
+	<div class="resign-box">
+		<form action="#">
+			<div class="inform-box width">
+				<ul>
+					
+					<li >
+						<label for="" class="icon-01" style="width:95px;">客户姓名<font style="color:#c7254e">*</font>：</label>
+						<div class="put-inform">
+							<input type="text" class="name" id="gover_search_key" placeholder="请填写您的姓名" />
+						</div>
+						<div class="position" id="gov_search_suggest">
+							<dl>
+							</dl>
+						</div>
+					</li>
+					
+					<li>
+						<label for="" class="icon-02" style="width:95px;">客户单位<font style="color:#c7254e">*</font>：</label>
+						<div class="put-inform">
+							<input type="text" class="address" id="gover_search_key1" placeholder="请填写您的单位地址" />
+						</div>
+						<!-- <div class="position" id="gov_search_suggest1">
+							<dl>
+							</dl>
+						</div> -->
+					</li>
+					<li>
+						<label for="" class="icon-03" style="width:95px;">联系电话<font style="color:#c7254e">*</font>：</label>
+						<div class="put-inform">
+							<input type="tel" class="phone" id="gover_search_key2" placeholder="请填写您的联系电话" />
+						</div>
+						<!-- <div class="position" id="gov_search_suggest2">
+							<dl>
+							</dl>
+						</div> -->
+					</li>
+					<li>
+						<label for="" class="icon-04" style="width:95px;"> 预 &nbsp;定 &nbsp;人&nbsp;：</label>
+						<div class="put-inform">
+							<input type="text" class="yname" placeholder="请填写您的预定人的称呼">
+						</div>
+					</li>
+					<li>
+						<label for="" class="icon-05" style="width:95px;"> 来访事由&nbsp;&nbsp;：</label>
+						<div class="put-inform">
+							<input type="text" class="content" placeholder="请填写您的来访理由">
+						</div>
+					</li>
+					<li>
+						<label for="" class="icon-06" style="width:95px;"> 备注&nbsp;：</label>
+						<div class="put-inform textarea-box">
+							<textarea name="" id="" class="make" cols="30" rows="10" placeholder="请填写您的业务要求"></textarea>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<button type="submit" class="btn-sub" onoff="0">提交</button>
+		</form>
+	</div>
+</body>
+
+<script src="__TMPL__Public/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript"  src="__TMPL__Public/layer/layer.js"></script>
+
+<script type="text/javascript">
+/* onblur="isphone()"
+function isphone(){
+	var phone = $('.phone').val();
+	var phoneReg = /^1[3,5,8,7]\d{9}$/;
+	if ($.trim(phone) == '') {
+		layer.msg('请输入联系电话');
+        return false;
+   	} else {
+   		if(!phoneReg.test(phone)){
+   			layer.msg('请输入格式正确的手机号');
+            return false;
+        }
+   	}
+} */
+
+$('.btn-sub').click(function(){
+	var onoff = $(this).attr("onoff");
+    if(onoff == 1){ //提交开关判断 0开1关
+    	layer.msg('请不要重复提交~');
+    	//定时执行2秒后执行
+		window.setTimeout(function(){
+			window.location.href = ""; 
+		},2000);
+        return false;
+    }
+	//客户姓名name
+	var name = $('.name').val();
+	if($.trim(name) == ''){
+		layer.msg('请输入客户姓名');
+		return false
+	}
+	//客户单位address
+	var address = $('.address').val();
+	if($.trim(address) == ''){
+		layer.msg('请输入客户单位');
+		return false
+	}
+	
+	//联系电话phone
+	var phone = $('.phone').val();
+	var phoneReg = /^1[3,5,8,7]\d{9}$/;
+	if ($.trim(phone) == '') {
+		layer.msg('请输入联系电话');
+        return false;
+   	} else {
+   		if(!phoneReg.test(phone)){
+   			layer.msg('请输入格式正确的手机号');
+            return false;
+        }
+   	}
+	
+	//预 定 人yname
+	var yname = $('.yname').val();
+	/* if($.trim(yname) == ''){
+		layer.msg('请输入预订人');
+		return false
+	} */
+	//来访事由content
+	var content = $('.content').val();
+	/* if($.trim(content) == ''){
+		layer.msg('请输入来访事由');
+		return false
+	} */
+	//备注make
+	var make = $('.make').val();
+	/* if($.trim(make) == ''){
+		layer.msg('请输入备注');
+		return false
+	} */
+	$('.btn-sub').attr('onoff', 1);
+	$.ajax({
+        type: "post",
+        data : 'name=' + $.trim(name) + '&address=' + $.trim(address) + '&phone=' + $.trim(phone) + '&yname=' + $.trim(yname) + '&content=' + $.trim(content) + '&make=' + $.trim(make),
+        url:'{:U("Wap/Msg/index")}',
+        async: false,
+        success: function (data) {
+        	if(data == 1) {
+        		layer.msg("有信息为空了");
+        		//定时执行2秒后执行
+				window.setTimeout(function(){
+					window.location.href = ""; 
+				},2000); 
+        	} else if(data == 2){
+        		layer.msg("提交成功");
+        		//定时执行2秒后执行
+				window.setTimeout(function(){
+					window.location.href = ""; 
+				},2000);
+        	} else {
+        		layer.msg('网络开小差~');
+             	return false;
+        	}
+        },
+        error:function(){
+            layer.msg('网络开小差~');
+         	return false;
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+function rid(rid){
+	//获取数据信息
+	$.ajax({
+	     type: "post",
+	     data : 'id=' + rid,
+	     url:'{:U("Wap/Msg/msgrid")}',
+	     async: false,
+	     success: function (data) {
+	    	 var info = eval("("+data+")");
+	    	 $('.name').val(info.name);
+	    	 $('.address').val(info.address);
+	    	 $('.phone').val(info.phone);
+	     },
+	     error:function(){
+	         layer.msg('网络开小差~');
+	      	return false;
+	     }
+	 });
+}
+
+/* function riadd(riadd){
+	//获取数据信息
+	$.ajax({
+	     type: "post",
+	     data : 'id=' + riadd,
+	     url:'{:U("Wap/Msg/msgrid")}',
+	     async: false,
+	     success: function (data) {
+	    	 var info = eval("("+data+")");
+	    	 $('.address').val(info.address);
+	     },
+	     error:function(){
+	         layer.msg('网络开小差~');
+	      	return false;
+	     }
+	 });
+}
+
+function ritel(ritel){
+	//获取数据信息
+	$.ajax({
+	     type: "post",
+	     data : 'id=' + ritel,
+	     url:'{:U("Wap/Msg/msgrid")}',
+	     async: false,
+	     success: function (data) {
+	    	 var info = eval("("+data+")");
+	    	 $('.phone').val(info.phone);
+	     },
+	     error:function(){
+	         layer.msg('网络开小差~');
+	      	return false;
+	     }
+	 });
+} */
+
+function oSearchSuggest(searchFuc, key, value)
+{ 
+	var input = $(key); 
+	var suggestWrap = $(value); 
+	var key = ""; 
+	var init = function(){
+		input.bind('keyup',sendKeyWord);
+		input.bind('input propertychange', sendKeyWord); 
+		input.bind('blur',function(){setTimeout(hideSuggest,100);}) 
+	} 
+	var hideSuggest = function(){ 
+		suggestWrap.hide(); 
+		//suggestWrap.show(); 
+	} 
+	//发送请求，根据关键字到后台查询 
+	var sendKeyWord = function(event){ 
+		//键盘选择下拉项 
+		if(suggestWrap.css('display')=='block'&&event.keyCode == 38||event.keyCode == 40)
+		{ 
+			var current = suggestWrap.find('dd.hover'); 
+			if(event.keyCode == 38)
+			{ 
+				if(current.length>0)
+				{ 
+					var prevLi = current.removeClass('hover').prev(); 
+					if(prevLi.length>0)
+					{ 
+						prevLi.addClass('hover'); 
+						input.val(prevLi.html()); 
+					} 
+				}
+				else
+				{ 
+					var last = suggestWrap.find('dd:last'); 
+					last.addClass('hover'); 
+					input.val(last.html()); 
+				} 
+			}
+			else if(event.keyCode == 40)
+			{ 
+				if(current.length>0)
+				{ 
+					var nextLi = current.removeClass('hover').next(); 
+					if(nextLi.length>0)
+					{ 
+						nextLi.addClass('hover'); 
+						input.val(nextLi.html()); 
+					} 
+				}
+				else
+				{ 
+					var first = suggestWrap.find('dd:first'); 
+					first.addClass('hover'); 
+					input.val(first.html()); 
+				} 
+			} 
+			//输入字符 
+		}
+		else
+		{ 
+			var valText = $.trim(input.val()); 
+			if(valText ==''||valText==key)
+			{ 
+				return; 
+			} 
+			searchFuc(valText); 
+			key = valText; 
+		} 
+	} 
+	//请求返回后，执行数据展示 
+	this.dataDisplay = function(data){ 
+		if(data.length<=0)
+		{ 
+			suggestWrap.hide(); 
+			return; 
+		} 
+		//往搜索框下拉建议显示栏中添加条目并显示 
+		var li; 
+		var tmpFrag = document.createDocumentFragment(); 
+		suggestWrap.find('dl').html(''); 
+		/* for(var i=0; i<data.length; i++)
+		{ 
+			li = document.createElement('DD'); 
+			li.innerHTML = data[i]; 
+			tmpFrag.appendChild(li); 
+		}  */
+		suggestWrap.find('dl').append(data); 
+		suggestWrap.show(); 
+		//为下拉选项绑定鼠标事件 
+		suggestWrap.find('dd').hover(function(){ 
+		suggestWrap.find('dd').removeClass('hover'); 
+		$(this).addClass('hover'); 
+	},function(){ 
+		$(this).removeClass('hover'); 
+	}).bind('click',function(){ 
+		$(this).find("span").remove(); 
+		//input.val(this.innerHTML); 
+		suggestWrap.hide();
+	}); 
+} 
+init(); 
+}; 
+
+
+//实例化输入提示的JS,参数为进行查询操作时要调用的函数名 
+var searchSuggest = new oSearchSuggest(sendKeyWordToBack, '#gover_search_key', '#gov_search_suggest'); 
+//这是一个模似函数，实现向后台发送ajax查询请求，并返回一个查询结果数据，传递给前台的JS,再由前台JS来展示数据。本函数由程序员进行修改实现查询的请求 
+//参数为一个字符串，是搜索输入框中当前的内容 
+function sendKeyWordToBack(keyword){ 
+ var aData = [];
+ 
+ $.ajax({
+     type: "post",
+     data : 'keyword=' + keyword,
+     url:'{:U("Wap/Msg/msgseach")}',
+     async: false,
+     success: function (data) {
+    	 aData.push(data);
+     },
+     error:function(){
+         layer.msg('网络开小差~');
+      	return false;
+     }
+ });
+ //aData.push('<span class="num_right">约100个</span>'+keyword+'返回数据1');
+ //将返回的数据传递给实现搜索输入框的输入提示js类 
+ searchSuggest.dataDisplay(aData); 
+}
+
+
+/* var searchSuggest1 = new oSearchSuggest(sendKeyWordToBack1, '#gover_search_key1', '#gov_search_suggest1'); 
+function sendKeyWordToBack1(keyword){
+ var aData = [];
+ $.ajax({
+     type: "post",
+     data : 'keyword=' + keyword,
+     url:'{:U("Wap/Msg/addseach")}',
+     async: false,
+     success: function (data) {
+    	 aData.push(data);
+     },
+     error:function(){
+         layer.msg('网络开小差~');
+      	return false;
+     }
+ });
+ searchSuggest1.dataDisplay(aData); 
+}
+
+var searchSuggest2 = new oSearchSuggest(sendKeyWordToBack2, '#gover_search_key2', '#gov_search_suggest2'); 
+function sendKeyWordToBack2(keyword){
+ var aData = [];
+ $.ajax({
+     type: "post",
+     data : 'keyword=' + keyword,
+     url:'{:U("Wap/Msg/phoneseach")}',
+     async: false,
+     success: function (data) {
+    	 aData.push(data);
+     },
+     error:function(){
+         layer.msg('网络开小差~');
+      	return false;
+     }
+ });
+ searchSuggest2.dataDisplay(aData); 
+} */
+</script>
+</html>
